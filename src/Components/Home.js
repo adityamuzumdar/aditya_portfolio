@@ -1,33 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
-  const [text, setText] = useState('');
-  const fullText = "I learn. I think. I create.";
-  const typingSpeed = 50; // Adjust typing speed (in milliseconds)
-  
-  useEffect(() => {
-    let currentIndex = 0;
-
-    const interval = setInterval(() => {
-      if (currentIndex <= fullText.length) {
-        setText(fullText.slice(0, currentIndex));
-        currentIndex++;
-      } else {
-        clearInterval(interval);
-      }
-    }, typingSpeed);
-
-    return () => clearInterval(interval);
-  }, [fullText]);
-
   return (
-    <div className='max-h-screen flex justify-center items-center flex-col  ' style={{ marginTop: '140px' }}>
-      <p className='text-6xl font-bold'>
-        Aditya Muzumdar
-      </p>
-      <p className='mt-2 text-base'>
-      {text}
-      </p>
+    <div className="flex flex-col justify-center min-h-[70vh] text-2xl md:text-4xl leading-[1.6] tracking-tight">
+      <p>Hi, I am <Link to="/about" className="home-link">Aditya</Link>.</p>
+      <p>I write <Link to="/projects" className="home-link">code</Link>.</p>
+      <p>I also <Link to="/writing" className="home-link">write</Link> sometimes.</p>
     </div>
   );
 }
